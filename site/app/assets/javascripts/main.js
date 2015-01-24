@@ -37,7 +37,7 @@ App.Views.JournalForm = Backbone.View.extend({
   },
   render: function () {
     this.$el.html(this.newTemplate());
-    $(document.body).append(this.el);
+    $('#content').append(this.el);
   },
   newTemplate: _.template($('#journal-form').html()),
   events: {
@@ -57,7 +57,7 @@ App.Views.JournalsView = Backbone.View.extend({
   render: function () {
     this.collection.each(function(Journal){
       var journalView = new App.Views.Journal({model: Journal});
-      $(document.body).append(journalView.el);
+      $('#content').append(journalView.el);
     });
   }
 });

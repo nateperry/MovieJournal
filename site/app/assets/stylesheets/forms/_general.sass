@@ -13,11 +13,32 @@ input[type=time],
 input[type="url"],
 input[type=week],
 textarea
-  background: $white
-  border: 1px solid $black
+  background: $white-pure
+  border: 1px solid darken($white, 8%)
+  +border-radius(2px)
   display: block
   font-family: $font-body
+  font-size: 1rem
   padding: 5px 8px
+  resize: none
+  width: 100%
+
+input[type=search]
+  +appearance(textfield)
+::-webkit-search-decoration
+  display: none
 
 label
   display: block
+  margin-bottom: 8px
+
+input[type=checkbox],
+input[type=radio]
+  height: 13px
+  width: 13px
+
+button,
+input[type=button],
+input[type=submit],
+input[type=reset],
+  @include extend-button()

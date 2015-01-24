@@ -1,0 +1,33 @@
+@mixin extend-button-hover ($btn-bg)
+  &:hover
+    background: lighten($btn-bg, 6%)
+    border-color: lighten($btn-bg, 14%)
+
+@mixin extend-button ()
+  $btn-bg: $green
+  background: $btn-bg
+  border: 3px solid lighten($btn-bg, 8%)
+  +border-radius(4px)
+  color: $white
+  cursor: pointer
+  display: inline-block
+  font-family: $font-body
+  font-size: 1rem
+  margin: 3px
+  padding: 8px 10px
+  +transition (all 200ms ease-in-out 0ms)
+  @include extend-button-hover ($btn-bg)
+  &.cancel
+    background: $red
+    border-color: lighten($red, 6%)
+    @include extend-button-hover($red)
+  &.draft
+    background: $blue
+    border-color: lighten($blue, 6%)
+    @include extend-button-hover($blue)
+  .fa
+    margin-right: 8px
+
+.btn,
+a.btn
+  @include extend-button()

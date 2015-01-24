@@ -1,11 +1,36 @@
-*
-  +box-sizing(border-box)
+// base styles for most general items
+
 
 body, html
+  height: 100%
   margin: 0
   padding: 0
+  width: 100%
+
+*, *:before, *:after
+  +box-sizing(border-box)
 
 body
   background: $white
   color: $black
   font-family: $font-body
+  font-size: 18px
+  margin: 0
+  padding: 0
+  line-height: 1
+
+h1, h2, h3, h4, h5, h6
+  font-family: $font-header
+  margin-top: 0
+
+hr
+  background: darken($white, 8%)
+  border: 1px solid darken($white, 8%)
+  color: darken($white, 8%)
+  height: 1px
+  width: 100%
+
+.container
+  margin: 0 auto
+  max-width: 960px
+  padding: 0 8px
