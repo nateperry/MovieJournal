@@ -1,0 +1,36 @@
+<script type="text/template" id="journal-form">
+  <div class="container">
+    <form action="" method="POST" class="journal-form">
+      <h3 class="form-title">My Journal</h3>
+      <div class="form-column-cta">
+        <div class="form-column left">
+          <label for="title">Title
+            <input id="journal-form-title" type="text" name="title" placeholder="Name of the movie..." />
+          </label>
+          <label for="date">Date
+            <input id="journal-form-date" type="date" name="date" placeholder="Date You Watched the movie..." value="<%= Date.today.strftime("%Y-%m-%d") %>" />
+          </label>
+          <label for="rating">Rating
+            <input id="journal-form-rating" type="range" name="rating" min="1" max="5" value="3" step="0.5" />
+            <output for="rating" id="rating-display"></output>
+          </label>
+          <label for="recommend">Recommend<input id="journal-form-recommend" type="checkbox" name="recommend" /></label>
+        </div>
+        <div class="form-column right">
+          <label for="review">Your Review<textarea id="journal-form-review" name="review" placeholder="Your thoughts about the movie..." rows="15" /></label>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="reset" class="cancel" name="cancel">
+          <span><i class="fa fa-times"></i>CANCEL</span>
+        </button>
+        <button type="submit" class="draft" name="draft">
+          <span><i class="fa fa-pencil-square-o"></i>SAVE DRAFT</span>
+        </button>
+        <button type="submit" class="publish" name="submit">
+          <span><i class="fa fa-book"></i>PUBLISH</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</script>

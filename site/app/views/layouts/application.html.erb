@@ -13,37 +13,7 @@
   <div id="content">
     <%= yield %>
   </div>
-
-  <script type="text/template" id="journal-form">
-  <div class="container">
-    <form action="" method="POST" class="journal-form">
-      <h3 class="form-title">New Journal</h3>
-      <div class="form-column-cta">
-        <div class="form-column left">
-          <label for="title">Title<input type="text" name="title" placeholder="Name of the movie..." /></label>
-          <label for="title">Date<input type="text" name="date" placeholder="Date You Watched the movie..." value="<%= Date.today.strftime("%m/%d/%Y") %>" /></label>
-          <label for="recommend">Recommend<input type="checkbox" name="recommend" /></label>
-        </div>
-        <div class="form-column right">
-          <label for="title">Your Review<textarea name="review" placeholder="Your thoughts about the movie..." rows="15" /></label>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="cancel" name="cancel">
-          <span><i class="fa fa-times"></i>CANCEL</span>
-        </button>
-        <button type="submit" class="draft" name="draft">
-          <span><i class="fa fa-pencil-square-o"></i>SAVE DRAFT</span>
-        </button>
-        <button type="submit" class="publish" name="submit">
-          <span><i class="fa fa-book"></i>PUBLISH</span>
-        </button>
-      </div>
-    </form>
-  </div>
-  </script>
   <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-
   <%= javascript_include_tag 'lib/underscore.js' %>
   <%= javascript_include_tag 'lib/backbone.js' %>
   <%= javascript_include_tag 'main.js' %>

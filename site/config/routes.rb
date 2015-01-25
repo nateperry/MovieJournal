@@ -56,4 +56,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root 'welcome#index'
+  get 'read/:id' => 'journal#read'
+  get 'journal' => 'journal#index'
+  get 'journal/new' => 'journal#new'
+  get 'journal/edit/:id' => 'journal#edit'
+  get 'journal/save'
 end

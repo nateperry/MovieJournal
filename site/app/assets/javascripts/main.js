@@ -15,12 +15,26 @@ App.Models.Journal = Backbone.Model.extend({
     console.log('Journal initialized');
   },
 
-  defaults : {
+  defaults: {
     title:'',
-    dates: [],
+    date: '',
     review: '',
     rating: 0,
     recommend: false
+  },
+
+  validate: function(attrs, options) {
+    if (! attrs.title) {
+      return 'Title of the movie is required';
+    }
+
+    if (! attrs.review || attrs.review.length < 4) {
+      return'Your review must be at least 4 letters';
+    }
+
+    if (! attrs.date) {
+      return 'Must select a date';
+    }
   }
 
 });
@@ -41,10 +55,41 @@ App.Views.JournalForm = Backbone.View.extend({
   },
   newTemplate: _.template($('#journal-form').html()),
   events: {
-    'submit': 'onFormSubmit'
+    'click .publish': 'onPublishSubmit',
+    'click .draft': 'onDraftSubmit',
+    'click .cancel': 'onCancel',
   },
-  onFormSubmit: function () {
-    alert('form submitted!');
+  onPublishSubmit: function (e) {
+    e.preventDefault();
+    var j = this.createJournal();
+    if (j.isValid()) {
+      // go ahead and save
+    } else {
+      alert(j.validationError);
+    }
+  },
+  onDraftSubmit: function (e) {
+    e.preventDefault();
+    var j = this.createJournal();
+    if (j.isValid()) {
+      // go ahead and save
+    } else {
+      alert(j.validationError);
+    }
+  },
+  onCancel: function (e) {
+    if (! window.confirm("Are you sure you cant to clear your journal?")) {
+      e.preventDefault();
+    }
+  },
+  createJournal: function () {
+    return new App.Models.Journal({
+      title: $('#journal-form-title').val(),
+      date: $('#journal-form-date').val(),
+      rating: $('#journal-form-rating').val(),
+      recommend: $('#journal-form-recommend').is(':checked'),
+      review: $('#journal-form-review').val(),
+    });
   }
 });
 
@@ -73,6 +118,7 @@ App.Views.Journal = Backbone.View.extend({
   }
 });
 
+/*
 var myJournal = new App.Models.Journal({
   title: 'Test',
   dates: ['1/22/2015'],
@@ -81,6 +127,7 @@ var myJournal = new App.Models.Journal({
   recommend: false
 });
 
+/*
 var myCollection = new App.Collections.JournalCollection([
   {
     title: 'Test',
@@ -100,6 +147,7 @@ var myCollection = new App.Collections.JournalCollection([
 
 var myView = new App.Views.JournalsView({collection: myCollection});
 myView.render();
+*/
 
 
 var form = new App.Views.JournalForm();
