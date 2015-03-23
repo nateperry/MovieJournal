@@ -1,6 +1,5 @@
 // base styles for most general items
 
-
 body, html
   height: 100%
   margin: 0
@@ -12,6 +11,7 @@ body, html
 
 body
   background: $white
+  background: darken($blue, 25%)
   color: $black
   font-family: $font-body
   font-size: 18px
@@ -34,3 +34,13 @@ hr
   margin: 0 auto
   max-width: 960px
   padding: 0 8px
+
+#content
+  margin-left: $sidebar-width
+
+.page
+  background: $offwhite
+  +border-radius(3px)
+  +box-shadow(0 0 1px #333)
+  margin: 25px 0
+  padding: 30px
