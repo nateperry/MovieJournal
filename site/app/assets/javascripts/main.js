@@ -15,6 +15,8 @@ App.Models.Journal = Backbone.Model.extend({
     console.log('Journal initialized');
   },
 
+  url: '/journal/save',
+
   defaults: {
     title:'',
     date: '',
@@ -62,8 +64,19 @@ App.Views.JournalForm = Backbone.View.extend({
   onPublishSubmit: function (e) {
     e.preventDefault();
     var j = this.createJournal();
+    j.url += '?csrf_token=' + $('meta[name="csrf-token"]').attr('content');
     if (j.isValid()) {
       // go ahead and save
+      j.save({}, {
+        success: function(model, response) {
+            console.log('SUCCESS:');
+            console.log(response.responseText);
+        },
+        error: function(model, response) {
+            console.log('FAIL:');
+            console.log(response.responseText);
+        }
+      });
     } else {
       alert(j.validationError);
     }
@@ -91,6 +104,7 @@ App.Views.JournalForm = Backbone.View.extend({
       review: $('#journal-form-review').val(),
     });
   }
+
 });
 
 App.Views.JournalsView = Backbone.View.extend({

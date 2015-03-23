@@ -1,6 +1,7 @@
 <script type="text/template" id="journal-form">
   <div class="container">
-    <form action="" method="POST" class="journal-form">
+    <%= form_for @journal, url: {action: "save"}, html: {class: "nifty_form"} do |f| %>
+      <%= form_tag :remote => true, :authenticity_token => true %>
       <h3 class="form-title">My Journal</h3>
       <div class="form-column-cta">
         <div class="form-column left">
@@ -31,6 +32,6 @@
           <span><i class="fa fa-book"></i>PUBLISH</span>
         </button>
       </div>
-    </form>
+      <% end -%>
   </div>
 </script>

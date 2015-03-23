@@ -60,5 +60,5 @@ Rails.application.routes.draw do
   get 'journal' => 'journal#index'
   get 'journal/new' => 'journal#new'
   get 'journal/edit/:id' => 'journal#edit'
-  get 'journal/save'
+  post 'journal/save' => 'journal#save'
 end

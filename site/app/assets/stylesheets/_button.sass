@@ -1,7 +1,8 @@
 @mixin extend-button-hover ($btn-bg)
-  &:hover
+  &:hover, &:focus
     background: lighten($btn-bg, 6%)
     border-color: lighten($btn-bg, 14%)
+    outline: none
 
 @mixin extend-button ()
   $btn-bg: $green
